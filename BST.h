@@ -15,8 +15,6 @@ class BST
         };
         node* insert(int data, node* root);
         bool find(node* root, int data);
-        node* remove(int x, node* t);
-        node* findSuccessor(node* node);
         void printInOrder(node* root);
         void printPreOrder(node* root);
         void printPostOrder(node* root);
@@ -26,7 +24,6 @@ class BST
         BST();
         void insert(int data);
         bool search(int data);
-        void remove(int x);
         void printInOrder();
         void printPreOrder();
         void printPostOrder();

@@ -30,9 +30,6 @@ int main()
     cout << endl;
 
     tree.printPostOrder();
-    tree.remove(20);
-    //cout << tree.root->data << endl;
-    //cout << tree.root->left->data << endl; 
 
     return 0;
 }
