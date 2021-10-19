@@ -2,10 +2,6 @@
 #include<iostream>
 using namespace std;
 
-    AVLTree::AVLTree() 
-    {
-    }
-    
     node* AVLTree::insert(int data, node* root)
     {
         if(root == NULL)
@@ -26,25 +22,39 @@ using namespace std;
             return root;
 
         updateHeight(root);
+        root = balance(data, root);
+
+        return root;
+    }
+
+    node* AVLTree::balance(int data, node* root)
+    {
         int heightDifference = getHeight(root->left) - getHeight(root->right);
 
-        if(heightDifference>1 && data<root->left->data)
-            return rotateRight(root);
-
-        if(heightDifference<-1 && data>root->right->data)
-            return rotateLeft(root);
-
-        if(heightDifference>1 && data>root->left->data)
+        if(heightDifference>1)
         {
-            root->left = rotateLeft(root->left);
-            return rotateRight(root);
+            if(data<root->left->data)
+                return rotateRight(root);
+
+            else if(data>root->left->data)
+            {
+                root->left = rotateLeft(root->left);
+                return rotateRight(root);
+            }
         }
-        if(heightDifference<-1 && data<root->right->data)
+
+        else if(heightDifference<-1)
         {
-            root->right = rotateRight(root->right);
-            return rotateLeft(root);
+            if(data>root->right->data)
+                return rotateLeft(root);
+
+            else if(data<root->right->data)
+            {
+                root->right = rotateRight(root->right);
+                return rotateLeft(root);
+            }
         }
-        
+
         return root; 
     }
 

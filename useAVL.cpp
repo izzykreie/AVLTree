@@ -1,5 +1,6 @@
 #include "AVLTree.h"
 #include <iostream>
+#include <fstream>
 using namespace std;
 
 int main()
@@ -7,20 +8,20 @@ int main()
     AVLTree tree;
     node* root = NULL;
 
-    root = tree.insert(20, root);
-    cout << root->data << endl; 
-    cout << "Root height:" << root->height << endl; 
- 
-    root = tree.insert(10, root);
-    root = tree.insert(5, root);
-    root = tree.insert(20, root);
-    root = tree.insert(15, root);
-    root = tree.insert(30, root);
-    root = tree.insert(40, root);
-
-
-    cout << root->data << endl;
-    tree.printInOrder(root);
+    int num;
+    string line;
+    ifstream AVL_tests("AVL_tests.txt");
+    if (AVL_tests.is_open())
+    {
+        while(getline (AVL_tests,line))
+        {
+            num = std::stoi(line);
+            root = tree.insert(num,root);
+        }
+        AVL_tests.close();
+    } 
+    
+    tree.printPreOrder(root);
 
     return 0;
 }

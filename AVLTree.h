@@ -16,8 +16,6 @@ class node
 class AVLTree
 {
     public:
-    AVLTree();
-
     node* insert(int data, node* root);
     bool find(node* root, int data);
     void printInOrder(node* root);
@@ -29,6 +27,7 @@ class AVLTree
     int getHeight(node* root);
     node* rotateRight(node* oldRoot);
     node* rotateLeft(node* oldRoot);
+    node* balance(int data, node* root);
 };
 
 #endif
